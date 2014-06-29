@@ -643,6 +643,12 @@ bool CMainMenu::OnServerClicked(const CEGUI::EventArgs &eventArgs)
 	CEGUI::ListboxItem * pPing = pMultiColumnList->getNextSelected(pMaxPlayers);
 	CEGUI::ListboxItem * pMode = pMultiColumnList->getNextSelected(pPing);
 
+	if (pLocked == NULL)
+	{
+		m_pGUI->ShowMessageBox("Sorry, masterlist doesn't work");
+		return false;
+	}
+
 	if (pLocked->getText() == "yes")
 	{
 		m_pGUI->ShowMessageBox("Sorry, this server is locked.");
